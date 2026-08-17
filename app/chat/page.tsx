@@ -42,7 +42,7 @@ const chat = () => {
                 <Flex p={3} alignItems={"center"} bg={"#B8E0F7"} w={290} mt={3}>
                   <Box w={"50px"}>
                     <Image
-                      src="m1.jpg"
+                      src="/m1.jpg"
                       borderRadius={100}
                       objectFit={"cover"}
                     />
@@ -56,7 +56,7 @@ const chat = () => {
                 <Flex p={3} alignItems={"center"} bg={"#B8E0F7"} w={290} mt={3}>
                   <Box w={"50px"}>
                     <Image
-                      src="m1.jpg"
+                      src="/m1.jpg"
                       borderRadius={100}
                       objectFit={"cover"}
                     />
@@ -70,7 +70,7 @@ const chat = () => {
                 <Flex p={3} alignItems={"center"} bg={"#B8E0F7"} w={290} mt={3}>
                   <Box w={"50px"}>
                     <Image
-                      src="m1.jpg"
+                      src="/m1.jpg"
                       borderRadius={100}
                       objectFit={"cover"}
                     />
@@ -91,7 +91,7 @@ const chat = () => {
                 <Flex>
                   <Box w={"50px"}>
                     <Image
-                      src="m1.jpg"
+                      src="/m1.jpg"
                       borderRadius={100}
                       objectFit={"cover"}
                     />

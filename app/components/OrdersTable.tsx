@@ -40,7 +40,7 @@ import { BiDotsHorizontal, BiDownArrow } from "react-icons/bi"
 import { BsCaretDown } from "react-icons/bs"
 import { useRouter } from 'next/navigation'
 import { useQuery } from "@tanstack/react-query"
-import { GetAllOrders } from "../api"
+import { GetAllOrders } from "../lib/api-client"
 
 // Types
 export type Orders = {
@@ -51,6 +51,13 @@ export type Orders = {
   name: string
   items: number
   date: string
+}
+
+type OrderProduct = {
+  id: string
+  productName: string
+  quantity: number
+  createdAt: string
 }
 
 // Sample data
@@ -175,7 +182,7 @@ const columns: ColumnDef<any>[] = [
     accessorKey: "products",
     header: "Date",
     cell: ({ row }) => (
-      <Text>{JSON.stringify(row.getValue("products")[0].createdAt)}</Text>
+      <Text>{JSON.stringify(row.getValue<OrderProduct[]>("products")[0]?.createdAt)}</Text>
     ),
     filterFn: dateFilterFn,
   },
@@ -183,7 +190,7 @@ const columns: ColumnDef<any>[] = [
     accessorKey: "products",
     header: "Products",
     cell: ({ row }) => (
-      row.getValue("products").map((prod) => (
+      row.getValue<OrderProduct[]>("products").map((prod) => (
         <Text key={prod.id}>
           {formatString(prod.productName)}, x {prod.quantity}
         </Text>
@@ -218,10 +225,8 @@ const { data: orders, isPending, isRefetching } = useQuery({
   queryFn: () => GetAllOrders()
 })
 
-console.log(orders)
-
   const table = useReactTable({
-    data: orders,
+    data: orders ?? [],
     columns,
     state: {
       sorting,

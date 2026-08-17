@@ -20,15 +20,15 @@ import {
 } from "@chakra-ui/react";
 import { ArrowBackIcon } from "@chakra-ui/icons";
 import { useRouter } from "next/navigation";
-import { CreateProduct } from "@/app/api";
-import { ProductType } from "@/Schemas";
+import { CreateProduct } from "@/app/lib/api-client";
+import { AddType } from "@/app/lib/schemas";
 
 const AddProducts = () => {
   const router = useRouter();
   const toast = useToast();
   const [loading, setLoading] = useState<boolean>(false);
   const [isImageLoading, setIsImageLoading] = useState<boolean>(false);
-  const [data, setData] = useState<ProductType>({
+  const [data, setData] = useState<AddType>({
     name: "",
     price: 0,
     description: "",
@@ -38,19 +38,19 @@ const AddProducts = () => {
     weight: "",
     expirationDate: "",
   });
-  const [errors, setErrors] = useState<Partial<Record<keyof ProductType, string>>>({});
+  const [errors, setErrors] = useState<Partial<Record<keyof AddType, string>>>({});
 
   const handleGoBack = () => {
     router.back(); // Navigates to the previous page
   };
 
   const validateFields = (): boolean => {
-    const newErrors: Partial<Record<keyof ProductType, string>> = {};
+    const newErrors: Partial<Record<keyof AddType, string>> = {};
     let isValid = true;
 
     Object.entries(data).forEach(([key, value]) => {
       if (!value && key !== 'price') {
-        newErrors[key as keyof ProductType] = 'This field is required';
+        newErrors[key as keyof AddType] = 'This field is required';
         isValid = false;
       }
     });
@@ -64,7 +64,7 @@ const AddProducts = () => {
     return isValid;
   };
 
-  const handleProductCreate = async (payload: ProductType) => {
+  const handleProductCreate = async (payload: AddType) => {
     if (!validateFields()) {
       toast({
         title: "Please fill all required fields",
@@ -112,7 +112,7 @@ const AddProducts = () => {
     const { name, value, files } = e.target as HTMLInputElement;
   
     if (name === "price") {
-      setData((prevData: ProductType) => ({ ...prevData, [name]: parseFloat(value) }));
+      setData((prevData: AddType) => ({ ...prevData, [name]: parseFloat(value) }));
     } else if (name === "image" && files && files[0]) {
       const reader = new FileReader();
       setIsImageLoading(true);
@@ -126,13 +126,13 @@ const AddProducts = () => {
   
         if (base64Data) {
           // Update the state with the base64 image URL
-          setData((prevData: ProductType) => ({ ...prevData, image: base64Data }));
+          setData((prevData: AddType) => ({ ...prevData, image: base64Data }));
         }
         setIsImageLoading(false);
       };
       reader.readAsDataURL(files[0]);
     } else {
-      setData((prevData: ProductType) => ({ ...prevData, [name]: value }));
+      setData((prevData: AddType) => ({ ...prevData, [name]: value }));
     }
 
     // Clear the error for the field being changed

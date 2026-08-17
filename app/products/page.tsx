@@ -20,8 +20,8 @@ import {
   useDisclosure,
   Icon,
 } from "@chakra-ui/react";
-import { DeleteProduct, GetProducts } from "@/app/api";
-import { ProductType } from "@/Schemas";
+import { DeleteProduct, GetProducts } from "@/app/lib/api-client";
+import { ProductType } from "@/app/lib/schemas";
 import { useQuery } from "@tanstack/react-query";
 import ProductModal from "../components/EditProductModal";
 import { GoInfo } from "react-icons/go";

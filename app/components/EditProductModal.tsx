@@ -1,5 +1,5 @@
 'use client'
-import { EditProductSchema, EditType } from '@/Schemas'
+import { EditProductSchema, EditType } from '@/app/lib/schemas'
 import {
   Button, Flex, FormControl, FormLabel, Input, Modal, ModalBody, ModalCloseButton,
   ModalContent, ModalFooter, ModalHeader, ModalOverlay, useToast, VStack, HStack,
@@ -7,7 +7,7 @@ import {
 } from '@chakra-ui/react'
 import { useRouter } from 'next/navigation'
 import React, { useRef, useState } from 'react'
-import { EditProduct } from '../api'
+import { EditProduct } from '../lib/api-client'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { FiUpload } from 'react-icons/fi'

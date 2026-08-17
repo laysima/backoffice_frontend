@@ -7,11 +7,11 @@ import { BsEye, BsEyeSlash } from "react-icons/bs";
 import NextLink from "next/link";
 import { useQuery } from "@tanstack/react-query";
 import { Controller, useForm } from "react-hook-form";
-import { LoginSchema, LoginType } from "@/Schemas";
+import { LoginSchema, LoginType } from "@/app/lib/schemas";
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useRouter } from "next/navigation";
 import { getCookie, setCookie } from "cookies-next";
-import { LoginUser } from "./api";
+import { LoginUser } from "./lib/api-client";
 
 const Page = () => {
   const [show, setShow] = React.useState(false);
@@ -93,7 +93,7 @@ const Page = () => {
       <GridItem h={"100vh"} bg={"white"}>
         <Flex justify={"center"} w={"full"}>
           <Box w={"300px"} mt={"60px"}>
-            <Image alt="pharmainc" objectFit={"cover"} src="pharmainc.svg" />
+            <Image alt="pharmainc" objectFit={"cover"} src="/pharmainc.svg" />
           </Box>
         </Flex>
 

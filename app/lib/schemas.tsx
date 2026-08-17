@@ -7,6 +7,7 @@ export const LoginSchema = z.object({
 })
 
 export const ProductSchema = z.object({
+  id: z.string(),
   category: z.string({ required_error: "Required" }),
   name: z.string({ required_error: "Required" }),
   weight: z.string({required_error: "Required" }),

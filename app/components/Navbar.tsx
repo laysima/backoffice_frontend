@@ -46,7 +46,7 @@ const Navbar = () => {
         >
           <Flex w={"full"} justify={"center"}>
             <Box w={"180px"} mt={"20px"}>
-              <Image objectFit={"cover"} src="pharmainc2.svg"></Image>
+              <Image objectFit={"cover"} src="/pharmainc2.svg"></Image>
             </Box>
           </Flex>
             <Flex 

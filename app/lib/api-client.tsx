@@ -1,5 +1,5 @@
 import axios from "axios";
-import { EditType, LoginType, ProductType } from "@/Schemas";
+import { AddType, EditType, LoginType, ProductType } from "@/app/lib/schemas";
 import { getCookie } from "cookies-next";
 
 const client = axios.create({
@@ -9,7 +9,7 @@ const client = axios.create({
 const session = getCookie("session");
   const nSession = session && JSON.parse(session);
 
-export const CreateProduct = async ({category, name, weight, dosage, expirationDate, description, price,image}: ProductType) => {
+export const CreateProduct = async ({category, name, weight, dosage, expirationDate, description, price,image}: AddType) => {
   const URL = "/v1/product/create";
   try {
     const response = await client.post(URL, { category, name, weight, dosage, expirationDate, description, price,image}, {
@@ -85,15 +85,8 @@ export const GetAllOrders = async () => {
       const response = await client.get(URL);
       const { data } = response.data;
 
-      console.log(data)
-      
       return data
   } catch (e: any) {
       throw new Error(e.response.data.error.message)
   }
 }
-
-// const { data: orders, isPending, isRefetching } = useQuery({
-//   queryKey: ['getOrderHistory'], 
-//   queryFn: () => GetAllOrders()
-// })

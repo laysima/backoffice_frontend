@@ -11,14 +11,13 @@ import PieChart from  "../components/PieChart";
 import { deleteCookie, getCookie } from "cookies-next";
 import { useRouter } from "next/navigation";
 import { BiLogOut } from "react-icons/bi";
-import LineChart from "../components/LineChart";
 import { IoPersonCircleOutline } from "react-icons/io5";
 import DataTableDemo from "../components/DataTableDemo";
 import { motion } from "framer-motion";
 import { FiTrendingUp, FiTrendingDown } from "react-icons/fi";
 import { RiMoneyDollarCircleLine } from "react-icons/ri";
 import { useQuery } from "@tanstack/react-query";
-import { GetAllOrders } from "../api";
+import { GetAllOrders } from "../lib/api-client";
 
 
 const Dashboard = () => {
